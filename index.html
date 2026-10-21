@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="generator">
+        <h1>CSS Generator</h1>
+
+        <div class="workspace">
+            <section class="settings-panel">
+                <div class="tabs" id="tabs">
+                    <button class="tab active" type="button" data-tab="radius">
+                        Border Radius
+                    </button>
+                    <button class="tab" type="button" data-tab="property-2">
+                        Background
+                    </button>
+                    <button class="tab" type="button" data-tab="property-3">
+                        Text &amp; Font
+                    </button>
+                    <button class="tab" type="button" data-tab="flex-basis-tab">
+                        Flex Basis
+                    </button>
+                    <button class="tab" type="button" data-tab="align-self-tab">
+                        Align Self
+                    </button>
+                </div>
+
+                <div class="tab-content active" data-content="radius">
+                    <h2>Border Radius</h2>
+                    <p class="description">Налаштуйте радіуси заокруглення кутів елемента</p>
+
+                    <div class="control">
+                        <label for="top-left">Top Left</label>
+                        <input id="top-left" type="range" min="0" max="100" value="30">
+                        <span id="top-left-value">30 px</span>
+                    </div>
+
+                    <div class="control">
+                        <label for="top-right">Top Right</label>
+                        <input id="top-right" type="range" min="0" max="100" value="60">
+                        <span id="top-right-value">60 px</span>
+                    </div>
+
+                    <div class="control">
+                        <label for="bottom-right">Bottom Right</label>
+                        <input id="bottom-right" type="range" min="0" max="100" value="20">
+                        <span id="bottom-right-value">20 px</span>
+                    </div>
+
+                    <div class="control">
+                        <label for="bottom-left">Bottom Left</label>
+                        <input id="bottom-left" type="range" min="0" max="100" value="80">
+                        <span id="bottom-left-value">80 px</span>
+                    </div>
+                </div>
+
+                <div class="tab-content" data-content="property-2">
+                    <h2>Background</h2>
+                    <p class="description">Налаштуйте колір фону елемента</p>
+
+                    <div class="control color-control">
+                        <label for="background-color">Background Color</label>
+                        <input id="background-color" type="color" value="#8995f5">
+                        <span id="background-color-value">#8995f5</span>
+                    </div>
+                </div>
+
+                <div class="tab-content" data-content="property-3">
+                    <h2>Text &amp; Font</h2>
+                    <p class="description">Налаштуйте текст елемента</p>
+
+                    <div class="control color-control">
+                        <label for="text-color">Text Color</label>
+                        <input id="text-color" type="color" value="#ffffff">
+                        <span id="text-color-value">#ffffff</span>
+                    </div>
+
+                    <div class="control">
+                        <label for="font-size">Font Size</label>
+                        <input id="font-size" type="range" min="12" max="36" value="18">
+                        <span id="font-size-value">18 px</span>
+                    </div>
+
+                    <div class="control select-control">
+                        <label for="font-family">Font Family</label>
+                        <select id="font-family">
+                            <option value="Arial, sans-serif">Arial</option>
+                            <option value="Georgia, serif">Georgia</option>
+                            <option value="'Courier New', monospace">Courier New</option>
+                            <option value="Verdana, sans-serif">Verdana</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="tab-content" data-content="flex-basis-tab">
+                    <h2>Flex Basis</h2>
+                    <p class="description">Налаштуйте початковий розмір flex-елемента (flex-basis)</p>
+                    <div class="control">
+                        <label for="flex-basis">Flex Basis</label>
+                        <input id="flex-basis" type="range" min="100" max="450" value="300">
+                        <span id="flex-basis-value">300 px</span>
+                    </div>
+                </div>
+
+                <div class="tab-content" data-content="align-self-tab">
+                    <h2>Align Self</h2>
+                    <p class="description">Налаштуйте вирівнювання елемента по поперечній осі (align-self)</p>
+                    <div class="control select-control">
+                        <label for="align-self">Align Self</label>
+                        <select id="align-self">
+                            <option value="auto">auto</option>
+                            <option value="flex-start">flex-start</option>
+                            <option value="flex-end">flex-end</option>
+                            <option value="center">center</option>
+                            <option value="stretch">stretch</option>
+                            <option value="baseline">baseline</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="event-tools">
+                    <h2>Події та пресети</h2>
+                    <p id="event-info" aria-live="polite">Натисни Preview для перевірки події click.</p>
+
+                    <form id="preset-form">
+                        <label for="preset-name">Назва пресета</label>
+                        <input id="preset-name" type="text" placeholder="Введіть назву пресета">
+                        <span id="preset-error" aria-live="polite"></span>
+                        <button type="submit" class="button">Зберегти пресет</button>
+                    </form>
+                    <p id="preset-message" aria-live="polite"></p>
+                </div>
+            </section>
+
+            <section class="output-panel">
+                <section class="preview-section">
+                    <h2>Preview</h2>
+                    <div class="preview-stage">
+                        <div id="preview" class="preview">
+                            <span id="preview-text">Preview</span>
+                            <button id="preview-button" type="button">Click</button>
+                        </div>
+                    </div>
+                    <p id="coordinates">X: 0; Y: 0</p>
+                </section>
+
+                <section class="result">
+                    <h2>CSS Code</h2>
+                    <textarea id="css-code" rows="7" readonly></textarea>
+                    <button id="copy-button" class="button" type="button">Скопіювати CSS</button>
+                    <p id="copy-message" aria-live="polite"></p>
+                </section>
+            </section>
+        </div>
+    </main>
+
+    <button id="scroll-top" type="button" aria-label="Повернутися вгору">↑</button>
+</body>
+</html>
